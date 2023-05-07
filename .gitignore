@@ -159,10 +159,4 @@ cython_debug/
 #  option (not recommended) you can uncomment the following to ignore the entire idea folder.
 #.idea/
 
-#We don't want to store the data on github: this can be queried
-#We do want the folder structure though
-/src/data/raw/*.csv
-/src/data/raw/StationDataOutput/*.csv
-/src/data/intermediate/*.csv
-/src/data/raw/responses/*
 
