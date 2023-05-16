@@ -1,14 +1,16 @@
 from dash import Input, Output, html
-from app.page_content import get_tube_map_content, get_other_content
+from page_content import get_tube_map_content, get_arrivals
+from settings import SETTINGS
 
 
-def callbacks(app):
+def callbacks(app, response):
     @app.callback(Output("page-content", "children"), [Input("url", "pathname")])
     def render_page_content(pathname):
-        if pathname == "/":
+        paths = SETTINGS["PAGE_PATHS"]
+        if pathname in paths["map"]:
             return get_tube_map_content()
-        elif pathname == "/page-1":
-            return get_other_content()
+        elif pathname in paths["arrivals"]:
+            return get_arrivals(response)
         # If the user tries to reach a different page, return a 404 message
         return html.Div(
             [

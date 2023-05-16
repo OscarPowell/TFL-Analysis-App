@@ -1,2 +1,4 @@
+#Don't track the files that are pulled in from APIs, only the data dumps found online
 *.csv
 *.txt
+!InterStationTimesAndDistancesDump.csv

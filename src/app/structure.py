@@ -1,5 +1,6 @@
 from dash import html, dcc
 import dash_bootstrap_components as dbc
+import dash_mantine_components as dmc
 
 SIDEBAR_STYLE = {
     "position": "fixed",
@@ -26,19 +27,9 @@ def get_structure():
             dcc.Location(id="url"),
             dbc.Row(
                 [
-                    dbc.Col(),
-                    dbc.Col(
-                        html.H1("Track the Circle Line"),
-                        width=9,
-                        style={"margin-left": "7px", "margin-top": "7px"},
-                    ),
-                ]
-            ),
-            dbc.Row(
-                [
                     dbc.Col(sidebar),
                     dbc.Col(
-                        html.Div(id="page-content", style=CONTENT_STYLE), width=9
+                        html.Div(id="page-content", style=CONTENT_STYLE), width=11
                     ),  # dcc.Graph(id = 'graph1', figure = fig1), width = 9, style = {'margin-left':'15px', 'margin-top':'7px', 'margin-right':'15px'}
                 ]
             ),
@@ -51,21 +42,12 @@ sidebar = html.Div(
         html.H2("Pages"),
         html.Hr(),
         html.P("Choose the functionality:", className="lead"),
-        # dbc.Nav(
-        #     [
-        #         dcc.Dropdown(id="one"),
-        #         html.Br(),
-        #         dcc.Dropdown(id="two"),
-        #         html.Br(),
-        #         dcc.Dropdown(id="three"),
-        #     ],
-        #     vertical=True,
-        #     pills=True,
-        # ),
         dbc.Nav(
             [
-                dbc.NavLink("Tube Stations Map", href="/", active="exact"),
-                dbc.NavLink("Shepherd's Bush Arrivals", href="/page-1", active="exact"),
+                dbc.NavLink("Tube Stations Map", href="/map", active="exact"),
+                dbc.NavLink(
+                    "Shepherd's Bush Arrivals", href="/arrivals", active="exact"
+                ),
             ],
             vertical=True,
             pills=True,
